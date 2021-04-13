@@ -45,7 +45,7 @@ class WebHRPayrollConfigController extends Controller
      */
     public function index()
     { 
-        dd("HELLO");
+       
         //home
         $pid_user = Auth::user()->pid_user;
 
