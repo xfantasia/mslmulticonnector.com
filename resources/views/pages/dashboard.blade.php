@@ -18,6 +18,10 @@
 @endsection
 
 
+@section('alert_messages')
+    @parent
+@endsection
+
 
 @section('sidebar')
     @parent

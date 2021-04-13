@@ -7,7 +7,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{!! url('/'); !!}" class="nav-link">Settings</a>
+        <a href="{!! url('/dashboard'); !!}" class="nav-link">Dashboard</a>
       </li>
       <!--<li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -26,7 +26,7 @@
     </ul>
   
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+    <!--<form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -35,15 +35,16 @@
           </button>
         </div>
       </div>
-    </form>
+    </form>-->
   
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          {{$company_name ?? ''}}
+          <!--<i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>-->
         </a>
       </li>
       <!--<li class="nav-item">

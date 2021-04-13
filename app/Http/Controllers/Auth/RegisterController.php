@@ -50,7 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'company_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,9 +66,46 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+                //RANDOM ID GENERATOR
+                function GeraHash($qtd){
+                    //Under the string $Caracteres you write all the characters you want to be used to randomly generate the code.
+                    $Caracteres = 'ABCDEFGHIJKLMOPQRSTUVXWYZ0123456789';
+                    $QuantidadeCaracteres = strlen($Caracteres);
+                    $QuantidadeCaracteres--;
+                    
+                    $Hash=NULL;
+                        for($x=1; $x<=$qtd; $x++){
+                            $Posicao = rand(0,$QuantidadeCaracteres);
+                            $Hash .= substr($Caracteres,$Posicao,1);
+                        }
+                    
+                    return $Hash;
+                    }
+                    
+                    //Here you specify how many characters the returning string must have
+                    $pid_user =  'USR'.GeraHash(5).time();
+                    
+                    //default each users role to subscriber
+                    $role = 'customer';
+        
+                    //remove spaces in string and convert to underscore
+                    //$friendly_name = str_replace(' ', '_', strtolower($data['friendly_name']));
+
         return User::create([
-            'name' => $data['name'],
+            'pid_user' => $pid_user,
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
+            'company_name' => $data['company_name'],
+            'company_address' => 'NA',
+            'company_phone' => 'NA',
+            'role' => $role,
+            'cid_status' => 'NA',
+            'login_status' => 'NA',
+            'image_name' => 'NA',
+            'image_ext' => 'NA',
+            'ext1' => 'NA',
             'password' => Hash::make($data['password']),
         ]);
     }
