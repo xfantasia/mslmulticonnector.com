@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WebHRPayrollConfigController extends Controller
+class BKP_WebHRPayrollConfigController extends Controller
 {
     /**
      * Display a listing of the resource.
