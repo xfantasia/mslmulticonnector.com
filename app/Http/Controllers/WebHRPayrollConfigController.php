@@ -69,7 +69,7 @@ class WebHRPayrollConfigController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { dd("HELLO");
+    { 
         //create form
         $data = array();
         $data['company_name'] = Auth::user()->company_name;
@@ -160,7 +160,7 @@ class WebHRPayrollConfigController extends Controller
      */
     public function edit($webhr_payroll_config)
     {
-        dd("HELLO");
+       
         //META DATA 
         $data = array();
         $pid_user = Auth::user()->pid_user;
@@ -188,7 +188,7 @@ class WebHRPayrollConfigController extends Controller
      */
     public function update(Request $request, $webhr_payroll_config)
     {
-        dd("HELLO");
+      
         //META DATA 
         $data = array();
         $pid_user = Auth::user()->pid_user;
@@ -234,7 +234,7 @@ class WebHRPayrollConfigController extends Controller
      */
     public function destroy($webhr_payroll_config)
     {
-        dd("HELLO");
+     
         //META DATA 
         $data = array();
         $pid_user = Auth::user()->pid_user;
@@ -264,7 +264,7 @@ class WebHRPayrollConfigController extends Controller
     //TEST WEBHR PAYROLL CONFIG
     public function payroll_config_test(Request $request)
     {
-        dd("HELLO");
+       
         //META DATA 
         $data = array();
         $pid_user = Auth::user()->pid_user;
