@@ -7,6 +7,7 @@ use App\Http\Controllers\SAPFinancialSystemsController;
 use App\Http\Controllers\SAPFinancialServicesController;
 use App\Http\Controllers\SAPCommunicationArrangementsController;
 use App\Http\Controllers\SAPCommunicationComponentsController;
+use App\Http\Controllers\SAPJournalEntryConfigController;
 
 
 /*
@@ -38,7 +39,7 @@ Route::get('/register', function () {
 });
 
 
-//USE DEFUALT LOGIN/REGISTER AUTH ROUTES (Overide custom routes) 
+//USE DEFUALT LOGIN/REGISTER AUTH ROUTES (Overide custom routes)
 Auth::routes();
 
 
@@ -51,14 +52,17 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 Route::resource('webhr_payroll_config', WebHRPayrollConfigController::class);
 Route::post('/webhr_payroll_config_test', [App\Http\Controllers\WebHRPayrollConfigController::class, 'payroll_config_test'])->name('webhr_payroll_config_test');
 
+Route::get('/webhr_payrollc', [App\Http\Controllers\WebHRPayrollConfigController::class, 'payroll_config_test'])->name('webhr_payroll_config_test2');
+
 
 //SAP CONTROLLER
 Route::resource('sap_financial_systems', SAPFinancialSystemsController::class);
 Route::resource('sap_financial_services', SAPFinancialServicesController::class);
 Route::resource('sap_communication_arrangements', SAPCommunicationArrangementsController::class);
 Route::resource('sap_communication_components', SAPCommunicationComponentsController::class);
+Route::resource('sap_journal_entry_config', SAPJournalEntryConfigController::class);
 
- 
+
 //ARTISAN CONTROLLER
 Route::get('/artisan/migrate/12345', [App\Http\Controllers\ArtisanCommandController::class, 'xmigrate'])->name('xmigrate');
 

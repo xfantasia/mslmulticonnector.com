@@ -44,14 +44,14 @@ class WebHRPayrollConfigController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-       
+    {
+
         //home
         $pid_user = Auth::user()->pid_user;
 
         $webhr_payroll_config = DB::table('webhr_payroll_config')
             ->where('pid_user', '=', $pid_user)
-            ->get(); 
+            ->get();
 
         $data = array();
         $data['company_name'] = Auth::user()->company_name;
@@ -69,7 +69,7 @@ class WebHRPayrollConfigController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
+    {
         //create form
         $data = array();
         $data['company_name'] = Auth::user()->company_name;
@@ -83,11 +83,11 @@ class WebHRPayrollConfigController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function store(Request $request)
     {
-        dd("HELLO");
-        //META DATA 
+        // dd("HELLO");
+        //META DATA
         $data = array();
         $pid_user = Auth::user()->pid_user;
 
@@ -100,7 +100,7 @@ class WebHRPayrollConfigController extends Controller
                 'config_name' => $request->config_name,
                 'api_name' => $request->api_name,
                 'config_type' => $request->config_type,
-                'get_url' => $request->get_url, 
+                'get_url' => $request->get_url,
                 'api_access_key' => $request->api_access_key,
                 'api_secret_key' => $request->api_secret_key,
                 'authorization_code' => $request->authorization_code,
@@ -115,7 +115,7 @@ class WebHRPayrollConfigController extends Controller
 
             $webhr_payroll_config = DB::table('webhr_payroll_config')
                 ->where('pid_user', '=', $pid_user)
-                ->get(); 
+                ->get();
 
             //DATA FOR VIEW
             $data['webhr_payroll_config'] = $webhr_payroll_config;
@@ -133,7 +133,7 @@ class WebHRPayrollConfigController extends Controller
      */
     public function show($webhr_payroll_config)
     {
-        //META DATA 
+        //META DATA
         $data = array();
         $pid_user = Auth::user()->pid_user;
 
@@ -141,7 +141,7 @@ class WebHRPayrollConfigController extends Controller
         $webhr_payroll_config = DB::table('webhr_payroll_config')
             ->where('pid_user', '=', $pid_user)
             ->where('pid_config', '=', $webhr_payroll_config)
-            ->get(); 
+            ->get();
 
         //DATA FOR VIEW
         $data['company_name'] = Auth::user()->company_name;
@@ -149,7 +149,7 @@ class WebHRPayrollConfigController extends Controller
 
         //\Session::flash('success', 'Configuration was succesfully deleted');
         return view('pages/webhr_payroll_config_show', $data);
-        
+
     }
 
     /**
@@ -160,8 +160,8 @@ class WebHRPayrollConfigController extends Controller
      */
     public function edit($webhr_payroll_config)
     {
-       
-        //META DATA 
+
+        //META DATA
         $data = array();
         $pid_user = Auth::user()->pid_user;
 
@@ -169,7 +169,7 @@ class WebHRPayrollConfigController extends Controller
         $webhr_payroll_config = DB::table('webhr_payroll_config')
             ->where('pid_user', '=', $pid_user)
             ->where('pid_config', '=', $webhr_payroll_config)
-            ->get(); 
+            ->get();
 
         //DATA FOR VIEW
         $data['company_name'] = Auth::user()->company_name;
@@ -188,8 +188,8 @@ class WebHRPayrollConfigController extends Controller
      */
     public function update(Request $request, $webhr_payroll_config)
     {
-      
-        //META DATA 
+
+        //META DATA
         $data = array();
         $pid_user = Auth::user()->pid_user;
 
@@ -201,7 +201,7 @@ class WebHRPayrollConfigController extends Controller
                 'config_name' => $request->config_name,
                 'api_name' => $request->api_name,
                 'config_type' => $request->config_type,
-                'get_url' => $request->get_url, 
+                'get_url' => $request->get_url,
                 'api_access_key' => $request->api_access_key,
                 'api_secret_key' => $request->api_secret_key,
                 'authorization_code' => $request->authorization_code,
@@ -213,7 +213,7 @@ class WebHRPayrollConfigController extends Controller
         //TABLE VIEW DATA
         $webhr_payroll_config = DB::table('webhr_payroll_config')
             ->where('pid_user', '=', $pid_user)
-            ->get(); 
+            ->get();
 
         //DATA FOR VIEW
         $data['company_name'] = Auth::user()->company_name;
@@ -225,7 +225,7 @@ class WebHRPayrollConfigController extends Controller
 
 
 
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -234,8 +234,8 @@ class WebHRPayrollConfigController extends Controller
      */
     public function destroy($webhr_payroll_config)
     {
-     
-        //META DATA 
+
+        //META DATA
         $data = array();
         $pid_user = Auth::user()->pid_user;
 
@@ -248,7 +248,7 @@ class WebHRPayrollConfigController extends Controller
 
         $webhr_payroll_config = DB::table('webhr_payroll_config')
             ->where('pid_user', '=', $pid_user)
-            ->get(); 
+            ->get();
 
         //DATA FOR VIEW
         $data['company_name'] = Auth::user()->company_name;
@@ -264,8 +264,8 @@ class WebHRPayrollConfigController extends Controller
     //TEST WEBHR PAYROLL CONFIG
     public function payroll_config_test(Request $request)
     {
-       
-        //META DATA 
+
+        //META DATA
         $data = array();
         $pid_user = Auth::user()->pid_user;
 
@@ -296,7 +296,7 @@ class WebHRPayrollConfigController extends Controller
 
         $webhr_payroll_config = DB::table('webhr_payroll_config')
             ->where('pid_user', '=', $pid_user)
-            ->get(); 
+            ->get();
 
         $data['company_name'] = Auth::user()->company_name;
         $data['webhr_payroll_config'] = $webhr_payroll_config;
@@ -307,31 +307,22 @@ class WebHRPayrollConfigController extends Controller
                     //dd('SUCCESS : '.$response->status().' : '.$response);
                     //$json = file_get_contents($response);
                     $objs = json_decode($response,true);
-
                     $pid_payroll = 'WHRPAYROLL'.XIScode::xHash(10).time();
-                    
-                    foreach($objs as $row)
+
+                    for($i=0; $i < count($objs); $i++)
                     {
-
-                        WebhrPayrollsModel::create([
-                                            'pid_payroll'       => $pid_payroll,
-                                            'company_name'      => $row["CompanyName"],
-                                            'station_name'      => $row["StationName"],
-                                            'division_name'     => $row["DivisionName"],
-                                            'username'          => $row["UserName"],
-                                            'first_name'        => $row["FirstName"],
-                                            'last_name'         => $row["LastName"],
-                                            'total_salary'      => $row["TotalSalary"],
-                                            'salary_date '      => $row["SalaryDate"],
-                                            'salary_period_start_date'     => $row["SalaryPeriod_StartDate"],
-                                            'salary_period_end_date'      => $row["SalaryPeriod_EndDate"],
-                        ]);
-                
+                        $objs[$i]['PidPayroll'] = $pid_payroll;
                     }
+                    $result = WebhrPayrollsModel::create([
+                        'payroll' => $objs]);
+                    $retrieve = DB::table('webhr_payrolls')
+                        ->where('id', '=', $result->id)->first();
+                    $display = json_decode($retrieve->payroll, true);
+                    dd($display[0]['CompanyName']);
                     dd("WEB-HR DATA UPDATE SUCCESSFUL!");
-                    
 
-                } 
+
+                }
             catch (Exception $e) {
                     //echo 'and the error is: ',  $e->getMessage(), "\n";
                     \Session::flash('failed', 'A Connection Error has occured! Check that your API URL and Parameters are correct.');

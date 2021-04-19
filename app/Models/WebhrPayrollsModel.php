@@ -13,23 +13,22 @@ class WebhrPayrollsModel extends Model
      */
 
     protected $fillable = [
-        'pid_payroll',
-        'company_name',
-        'station_name',
-        'division_name',
-        'username',
-        'first_name',
-        'last_name',
-        'total_salary',
-        'salary_date',
-        'salary_period_start_date',
-        'salary_period_end_date',
+        'payroll',
         'status1',
         'status2',
         'ext1',
         'ext2',
         'created_at',
         'updated_at'
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'payroll' => 'array',
     ];
 
     protected $table = 'webhr_payrolls';

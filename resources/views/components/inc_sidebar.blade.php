@@ -41,7 +41,7 @@
                 <a href="{!! url('/dashboard'); !!}" class="nav-link activex">
                   <i class="bi bi-bar-chart-line"></i>
                   <p>
-                   <b>SYSTEM STATISTICS</b>  
+                   <b>SYSTEM STATISTICS</b>
                   </p>
                 </a>
                 </li>
@@ -50,7 +50,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-network-wired"></i>
               <p>
-               <b>CONNECTORS</b>  
+               <b>CONNECTORS</b>
                 <i class="right fas fa-angle-double-left"></i>
               </p>
             </a>
@@ -78,28 +78,27 @@
             <a href="#" class="nav-link activex">
               <i class="nav-icon fas fa-desktop"></i>
               <p>
-               <b>SAP API SYSTEMS</b>  
+               <b>SAP API SYSTEMS</b>
                 <i class="right fas fa-angle-left"></i>
               </p>
-            </a>
-            <ul class="nav nav-treeview">
+              </a>
+              <ul class="nav nav-treeview">
 
-              <li class="nav-item">
-                <a href="{!! url('/sap_financial_systems/create'); !!}" class="nav-link">
-                  <i class="fas fa-laptop"></i>&nbsp;
-                  <p>Create Financial System</p>
-                </a>
-              </li>
-              
-              <li class="nav-item">
-                <a href="{!! url('/sap_financial_services/create'); !!}" class="nav-link">
-                  <i class="fas fa-cubes"></i>&nbsp;
-                  <p>Create Financial Service</p>
-                </a>
-              </li>
+                <li class="nav-item">
+                    <a href="{!! url('/sap_financial_systems/create'); !!}" class="nav-link">
+                    <i class="fas fa-laptop"></i>&nbsp;
+                    <p>Create Financial System</p>
+                    </a>
+                </li>
 
-            </ul>
-          </li>
+                <li class="nav-item">
+                    <a href="{!! url('/sap_financial_services/create'); !!}" class="nav-link">
+                    <i class="fas fa-cubes"></i>&nbsp;
+                    <p>Create Financial Service</p>
+                    </a>
+                </li>
+              </ul>
+            </li>
 
 
 
@@ -107,7 +106,7 @@
             <a href="#" class="nav-link activex">
               <i class="nav-icon fas fa-code-branch"></i>
               <p>
-               <b>C-COMPONENTS</b>  
+               <b>C-COMPONENTS</b>
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -127,6 +126,29 @@
 
             </ul>
           </li>
+          <li class="nav-item menu-closed">
+            <a href="#" class="nav-link activex">
+                <i class="nav-icon fas fa-globe"></i>
+                <p>
+                 <b>SAP JOURNAL ENTRY</b>
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{!! url('/sap_journal_entry_config/create'); !!}" class="nav-link">
+                    <i class="fas fa-cogs nav-play"></i>&nbsp;
+                    <p>Journal Config</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{!! url('/sap_journal_entry_config'); !!}" class="nav-link">
+                    <i class="fas fa-cogs"></i>&nbsp;
+                    <p>View Journal Config</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
 
           <li class="nav-header">EXTERNAL API SYSTEM </li>
@@ -134,7 +156,7 @@
             <a href="#" class="nav-link activex">
               <i class="nav-icon fas fa-globe"></i>
               <p>
-               <b>WEB-HR Payroll</b>  
+               <b>WEB-HR Payroll</b>
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -157,13 +179,13 @@
 
 
 
-          
+
           <li class="nav-header">VIEW SYSTEMS / COMPONENTS </li>
           <li class="nav-item menu-closed">
             <a href="#" class="nav-link activex">
               <i class="nav-icon fas fa-desktop"></i>
               <p>
-               <b>VIEW SAP</b>  
+               <b>VIEW SAP</b>
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -201,7 +223,7 @@
             <a href="#" class="nav-link activex">
               <i class="nav-icon fas fa-globe"></i>
               <p>
-               <b>VIEW WEB-HR</b>  
+               <b>VIEW WEB-HR</b>
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -215,7 +237,7 @@
 
             </ul>
           </li>
-       
+
 
 
           <li class="nav-header">ADMIN TOOLS </li>
@@ -256,7 +278,7 @@
             </ul>
           </li>
 
-          
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
