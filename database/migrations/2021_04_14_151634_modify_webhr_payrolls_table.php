@@ -29,17 +29,17 @@ class ModifyWebhrPayrollsTable extends Migration
     {
         Schema::table('webhr_payrolls', function (Blueprint $table) {
             $table->dropColumn('payroll');
-            $table->string('pid_payroll')->unique();
-            $table->string('company_name');
-            $table->string('station_name');
-            $table->string('division_name');
-            $table->string('username');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('total_salary');
-            $table->string('salary_date');
-            $table->string('salary_period_start_date');
-            $table->string('salary_period_end_date');
+            $table->string('pid_payroll')->after('id');
+            $table->string('company_name')->after('pid_payroll');
+            $table->string('station_name')->after('company_name');
+            $table->string('division_name')->after('station_name');
+            $table->string('username')->after('division_name');
+            $table->string('first_name')->after('username');
+            $table->string('last_name')->after('first_name');
+            $table->string('total_salary')->after('last_name');
+            $table->string('salary_date')->after('total_salary');
+            $table->string('salary_period_start_date')->after('salary_date');
+            $table->string('salary_period_end_date')->after('salary_period_start_date');
         });
     }
 }

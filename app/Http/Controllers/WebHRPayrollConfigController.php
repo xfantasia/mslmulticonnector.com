@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\WebhrPayrollsModel;
 use Exception;
 use Image;
-use App\User;
 
 use Validator;
 use Illuminate\Support\Facades\Http;
@@ -259,12 +258,14 @@ class WebHRPayrollConfigController extends Controller
     }
 
 
-
+    public function pid_payroll()
+    {
+        return 'WHRPAYROLL'.XIScode::xHash(10).time();
+    }
 
     //TEST WEBHR PAYROLL CONFIG
     public function payroll_config_test(Request $request)
     {
-
         //META DATA
         $data = array();
         $pid_user = Auth::user()->pid_user;
@@ -307,21 +308,39 @@ class WebHRPayrollConfigController extends Controller
                     //dd('SUCCESS : '.$response->status().' : '.$response);
                     //$json = file_get_contents($response);
                     $objs = json_decode($response,true);
-                    $pid_payroll = 'WHRPAYROLL'.XIScode::xHash(10).time();
 
                     for($i=0; $i < count($objs); $i++)
                     {
-                        $objs[$i]['PidPayroll'] = $pid_payroll;
+                        $pid_payroll = $this->pid_payroll();
+                        $company_name = $objs[$i]["CompanyName"];
+                        $station_name = $objs[$i]["StationName"];
+                        $division_name = $objs[$i]["DivisionName"];
+                        $username = $objs[$i]["UserName"];
+                        $first_name = $objs[$i]["FirstName"];
+                        $last_name = $objs[$i]["LastName"];
+                        $total_salary = $objs[$i]["TotalSalary"];
+                        $salary_date = $objs[$i]["SalaryDate"];
+                        $salary_period_start_date = $objs[$i]["SalaryPeriod_StartDate"];
+                        $salary_period_end_date = $objs[$i]["SalaryPeriod_EndDate"];
+
+                        DB::table('webhr_payroll')->insert([
+                            'pid_payroll' => $pid_payroll,
+                            'company_name' => $company_name,
+                            'station_name' => $station_name,
+                            'division_name' => $division_name,
+                            'username' => $username,
+                            'first_name' => $first_name,
+                            'last_name' => $last_name,
+                            'total_salary' => $total_salary,
+                            'salary_date' => $salary_date,
+                            'salary_period_start_date' => $salary_period_start_date,
+                            'salary_period_end_date' => $salary_period_end_date,
+                            'created_at' => now(),
+                            'updated_at' => now()
+                        ]);
+
                     }
-                    $result = WebhrPayrollsModel::create([
-                        'payroll' => $objs]);
-                    $retrieve = DB::table('webhr_payrolls')
-                        ->where('id', '=', $result->id)->first();
-                    $display = json_decode($retrieve->payroll, true);
-                    dd($display[0]['CompanyName']);
                     dd("WEB-HR DATA UPDATE SUCCESSFUL!");
-
-
                 }
             catch (Exception $e) {
                     //echo 'and the error is: ',  $e->getMessage(), "\n";
